@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+
+.nav-item .nav-link.active{
+    background-color: #0d6efd !important;
+    color: #FFF;
+}
+
+.nav-item .nav-link{
+    color: #212529 ;
+    font-weight: 600;
+}
+
+.tab-pane{
+    overflow: auto;
+    height: 50vh;
+}
+
+.form-group.row{
+    margin: .5rem;
+}

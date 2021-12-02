@@ -1,0 +1,57 @@
+<div style="margin: 0.5rem;height: 70vh;">
+
+    <form>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input [disabled]="isEmployeeDataLoaded" type="email" name="email" [(ngModel)]="email" class="form-control" id="email" placeholder="Email">
+            </div>
+        </div>
+        <button *ngIf="!isFeedbackDataLoaded" class="btn-primary" style="float: right;" (click)="search()">Search Feedback</button>
+
+        <table *ngIf="isEmployeeDataLoaded" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Feedback Id</th>
+                    <th scope="col">Connect Date</th>
+                    <th scope="col">Manager Email</th>
+                    <th scope="col">View</th>
+                </tr>
+            </thead>
+            <tbody style="overflow: auto;height: 20vh;">
+                <tr *ngFor="let feedback of feedbackList; index as i">
+                    <td>{{feedback.feedbackId}}</td>
+                    <td>{{feedback.connectDate}}</td>
+                    <td>{{feedback.managerEmail}}</td>
+                    <td>
+                        <button (click)="viewFeedback(feedback)">
+                            <i class="bi bi-info-square-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table *ngIf="isFeedbackDataLoaded" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Feedback Category</th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
+                    </tr>
+                </thead>
+                <tbody style="overflow: auto;height: 30vh;">
+                    <tr *ngFor="let feedback of feedbackData; index as i">
+                        <td>{{feedback.category}}</td>
+                        <td>{{feedback.question}}</td>
+                        <td>{{feedback.answer}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </form>
+</div>
+<div *ngIf="isEmployeeDataLoaded" style="width: 100%">
+    <button class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
+</div>

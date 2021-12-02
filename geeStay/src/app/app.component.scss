@@ -1,0 +1,9 @@
+.router-outlet-div{
+    width:calc(100% - 150px - 1rem);
+    height:calc(100vh - 56px - 1rem);
+    padding: 0.5rem;
+    float: right;
+    margin: 0.5rem;
+    border: .5px #cecdcd solid;
+    box-shadow: .5px .5px .5px .5px #cecdcd;
+}

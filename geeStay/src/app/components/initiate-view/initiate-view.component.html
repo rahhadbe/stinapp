@@ -1,0 +1,155 @@
+<div style="margin: 0.5rem;height: 70vh;">
+
+    <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink>Candidate
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email
+                            <span style="color: red">*</span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input [disabled]="isDataLoaded" type="email" name="email" [(ngModel)]="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <button *ngIf="!isDataLoaded" class="btn-primary" style="float: right;" (click)="search()">Search</button>
+                    <div *ngIf="isDataLoaded">
+                        <div class="form-group row">
+                            <label for="firstName" class="col-sm-2 col-form-label">First Name
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input disabled type="text" disabled name="firstName" [(ngModel)]="firstName" class="form-control" id="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastName" class="col-sm-2 col-form-label">Last Name
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input disabled type="text" name="lastName" [(ngModel)]="lastName" class="form-control" id="lastName" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="managerEmail" class="col-sm-2 col-form-label">Manager Email
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input disabled type="text" name="managerEmail" [(ngModel)]="managerEmail" class="form-control" id="managerEmail" placeholder="Manager Email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="hireDate" class="col-sm-2 col-form-label">Hire Date
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input disabled class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="hireDate" ngbDatepicker [footerTemplate]="footerTemplate"
+                                                #d="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button disabled class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                                    <i class="bi bi-calendar3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <ng-template #footerTemplate>
+                                    <hr class="my-0">
+                                    <button class="btn btn-primary btn-sm m-2 float-left" (click)="hireDate = today; d.close()">Today</button>
+                                    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="department" class="col-sm-2 col-form-label">Department
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input disabled type="text" name="department" [(ngModel)]="department" class="form-control" id="department" placeholder="Department">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+        <li *ngIf="isDataLoaded" [ngbNavItem]="2">
+            <a ngbNavLink>Employee Interest
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qna of employeeInterestQnA; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qna.question}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qna.answer">
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+        <li *ngIf="isDataLoaded" [ngbNavItem]="3">
+            <a ngbNavLink>Job
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qna of jobQnA; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qna.question}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qna.answer">
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+        <li *ngIf="isDataLoaded" [ngbNavItem]="4">
+            <a ngbNavLink>Culture
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qna of cultureQnA; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qna.question}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qna.answer">
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+        <li *ngIf="isDataLoaded" [ngbNavItem]="5">
+            <a ngbNavLink>Work Environment
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qna of workEnvQnA; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qna.question}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qna.answer">
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+        <li *ngIf="isDataLoaded" [ngbNavItem]="6">
+            <a ngbNavLink>Technology
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qna of techQnA; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qna.question}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qna.answer">
+                    </div>
+                </form>
+            </ng-template>
+        </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+<div *ngIf="isDataLoaded" style="width: 100%">
+    <div *ngIf="errorMsg && errorMsg.length > 0" style="color: red;float:left" [innerHTML]="errorMsg"></div>
+    <button class="btn-primary" style="float: right;" (click)="submit()">Submit</button>
+    <button class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
+</div>

@@ -1,0 +1,19 @@
+.side-panel{
+    float: left;width: 150px; height: calc(100vh - 56px);
+    background-color: #0d6efd !important;
+    color: #FFF;
+}
+
+.side-panel-text{
+    color: #FFF;
+    cursor: pointer;
+}
+
+.side-panel-text:hover{
+color: #e9ecef;
+}
+
+.list-group-item{
+    background-color: #0d6efd !important;
+border-bottom: 1px #e9ecef solid;
+}
