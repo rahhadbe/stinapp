@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -16,7 +17,6 @@ public class GeeStayController {
     private GeeStayService geeStayService;
 
     @PostMapping("/employee")
-    @ResponseBody
     public ResponseEntity initiate(@RequestBody Employee employee){
         geeStayService.initiate(employee);
         return null;
@@ -37,3 +37,4 @@ public class GeeStayController {
         geeStayService.save(feedbackResponse);
     }
 }
+
