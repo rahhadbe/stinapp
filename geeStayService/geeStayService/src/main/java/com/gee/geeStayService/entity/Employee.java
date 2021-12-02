@@ -13,7 +13,7 @@ import java.util.List;
 public class Employee {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeehrid;
     private String firstname;
     private String lastname;
