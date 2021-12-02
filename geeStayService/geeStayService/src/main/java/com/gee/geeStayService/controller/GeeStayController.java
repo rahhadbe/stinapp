@@ -14,13 +14,26 @@ public class GeeStayController {
     @Autowired
     private GeeStayService geeStayService;
 
-    @PostMapping("/initiate")
+    @PostMapping("/addemployee")
+    public ResponseEntity add(@RequestBody Employee employee){
+        geeStayService.add(employee);
+        return  new ResponseEntity<>( HttpStatus.OK); ;
+    }
+
+    @GetMapping("/getinitiationdet")
+    public ResponseEntity initiate(@RequestBody String email){
+        geeStayService.initiate(email);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
+    @PostMapping("/getfeedback")
     public ResponseEntity initiate(@RequestBody Employee employee){
         geeStayService.initiate(employee);
         return null;
     }
 
     @GetMapping("/hello")
+
 
   public String hello() {
 

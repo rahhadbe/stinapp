@@ -11,7 +11,11 @@ public class GeeStayService {
     @Autowired
     private EmployeeRepo employeeRepo;
 
-    public void initiate(Employee employee){
+    public void add(Employee employee){
         employeeRepo.save(employee);
+    }
+    public void initiate(String email)
+    {
+        List <Employee> employee = employeeRepo.getEmployeeByEmail(email);
     }
 }
