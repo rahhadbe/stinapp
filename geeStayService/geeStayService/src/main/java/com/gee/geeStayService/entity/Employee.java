@@ -6,22 +6,22 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "employee")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Employee {
+
     @Id
     @GeneratedValue
-    private Long employeeId;
-    private String firstName;
-    private String lastName;
+    private Long employeehrid;
+    private String firstname;
+    private String lastname;
     private String email;
-    private Long phoneNumber;
+    private Long phonenumber;
     @Temporal(TemporalType.DATE)
-    private Date hireDate;
-    private Long mangerId;
-    private String departmentName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeId")
-    private List<Feedback> feedbackList;
+    private Date hiredate;
+    private Long mangerhrid;
+    private String departmentname;
+
 }
