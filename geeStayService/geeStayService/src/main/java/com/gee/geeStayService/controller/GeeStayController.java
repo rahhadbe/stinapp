@@ -2,6 +2,7 @@ package com.gee.geeStayService.controller;
 
 import com.gee.geeStayService.entity.Employee;
 import com.gee.geeStayService.entity.Feedback;
+import com.gee.geeStayService.entity.FeedbackDet;
 import com.gee.geeStayService.service.GeeStayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +29,14 @@ public class GeeStayController {
         return geeStayService.getEmployee(email);
     }
 
-    @GetMapping(value = "/feedback/{id}")
-    public Feedback getFeedback(@PathVariable("id") Long id) {
-        return geeStayService.getFeedback(id);
+    @GetMapping(value = "/feedback/{email}")
+    public List <Feedback> getFeedback(@PathVariable("email") String email) {
+        return geeStayService.getFeedback(email);
     }
 
-    @GetMapping(value = "/feedbacks")
-    public List<Feedback> getAllFeedbacks() {
-        return geeStayService.getAllFeedbacks();
+    @GetMapping(value = "/feedbackdet/{id}")
+    public List <FeedbackDet> getFeedbackDet(@PathVariable("id") Long id) {
+        return geeStayService.getFeedbackDet(id);
     }
 
     @PostMapping(value = "/feedback")

@@ -16,6 +16,7 @@ public class FeedbackDet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackDetId;
+    private Long feedbackId;
     private String question;
     private String response;
 

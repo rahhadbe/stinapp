@@ -2,10 +2,12 @@ package com.gee.geeStayService.service;
 
 import com.gee.geeStayService.entity.Employee;
 import com.gee.geeStayService.entity.Feedback;
+import com.gee.geeStayService.entity.FeedbackDet;
 import com.gee.geeStayService.entity.Question;
 import com.gee.geeStayService.repo.QuestionRepo;
 import com.gee.geeStayService.repo.EmployeeRepo;
 import com.gee.geeStayService.repo.FeedbackRepo;
+import com.gee.geeStayService.repo.FeedbackRepoDet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class GeeStayService {
 
     @Autowired
     private FeedbackRepo feedbackRepo;
+
+    @Autowired
+    private FeedbackRepoDet feedbackRepoDet;
 
     @Autowired
     private QuestionRepo questionRepo;
@@ -39,7 +44,7 @@ public class GeeStayService {
         return feedbackRepo.getFeedbackByEmail(email);
     }
 
-    public FeedbackDet getFeedbackDet(Long id) {
+    public List <FeedbackDet> getFeedbackDet(Long id) {
         return feedbackRepoDet.getFeedbackById(id);
     }
 
@@ -47,7 +52,4 @@ public class GeeStayService {
         feedbackRepo.save(feedbackResponse);
     }
 
-    public List<Feedback> getAllFeedbacks() {
-        return feedbackRepo.findAll();
-    }
 }
