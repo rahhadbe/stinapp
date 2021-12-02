@@ -1,2 +1,9 @@
+service: stinapp-ui
 runtime: nodejs16
-service: default
+env: standard
+instance_class: F1
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic

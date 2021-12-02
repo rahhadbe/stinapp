@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FeedbackRepo extends JpaRepository<Feedback, Long> {
 
-    Feedback getByFeedbackid(Long id);
+    @Query( value = "SELECT * FROM feedback u WHERE u.employeeemail = :email", nativeQuery = true)
+    List <Feedback> getFeedbackByEmail(String email);
 
 }

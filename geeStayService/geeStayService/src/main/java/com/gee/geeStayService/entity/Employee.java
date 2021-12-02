@@ -21,7 +21,7 @@ public class Employee {
     private Long phonenumber;
     @Temporal(TemporalType.DATE)
     private Date hiredate;
-    private Long managerhrid;
+    private String manageremail;
     private String departmentname;
 
 }

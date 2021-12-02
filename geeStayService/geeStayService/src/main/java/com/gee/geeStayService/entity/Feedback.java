@@ -17,13 +17,10 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackid;
 
+    private String employeeemail;
+    private String manageremail;
+
     @Temporal(TemporalType.DATE)
-    private Date capturetime;
-
-    private Long employeehrid;
-    //    private Long managerhrid;
-    private Long questionid;
-    //    private String aggsentiment_score;
-    private String response;
-
+    private Date capturedate;
+    private String aggsentiment_score;
 }

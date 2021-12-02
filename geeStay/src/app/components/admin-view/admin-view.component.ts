@@ -53,7 +53,7 @@ export class AdminViewComponent implements OnInit {
         // hireDate: this.hireDate['day'] + "/" + this.hireDate['month'] + "/" + this.hireDate['year'],
         departmentname: this.department
       }).subscribe((result: any) => {
-        this.toastService.showToast("Success", false);
+        this.toastService.showToast("Success");
         this.reset();
       },
         (error: any) => {
