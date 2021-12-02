@@ -10,6 +10,8 @@ import { InitiateViewComponent } from './components/initiate-view/initiate-view.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ViewComponent } from './components/view/view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastsContainer } from './util/ToastsContainer';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ViewComponent } from './components/view/view.component';
     SideNavComponent,
     AdminViewComponent,
     InitiateViewComponent,
-    ViewComponent
+    ViewComponent,
+    ToastsContainer
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

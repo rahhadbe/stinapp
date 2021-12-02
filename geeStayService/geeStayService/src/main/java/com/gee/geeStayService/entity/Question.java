@@ -5,21 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Entity
-@Table(name="Feedbackdet")
+@Entity(name = "question")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Deprecated
-public class FeedbackDet {
+public class Question {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long feedbackDetId;
-    private String question;
-    private String response;
+    private int questionid;
 
-    @ManyToOne
-    @JoinColumn(name="feedbackId")
-    private Feedback feedback;
+    private String questioncontent;
+    private QuestionType questiontype;
+    private String possibilities;
+
 }

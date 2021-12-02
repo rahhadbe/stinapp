@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-initiate-view',
@@ -9,8 +8,7 @@ import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 export class InitiateViewComponent implements OnInit {
 
   activeTab = 1;
-  hireDate: NgbDateStruct;
-  today = this.calendar.getToday();
+  hireDate: string;
 
   firstName: string = "";
   lastName: string = "";
@@ -22,7 +20,7 @@ export class InitiateViewComponent implements OnInit {
 
   isDataLoaded = false;
 
-  constructor(private calendar: NgbCalendar) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -127,7 +125,7 @@ export class InitiateViewComponent implements OnInit {
     this.lastName = "";
     this.email = "";
     this.managerEmail = "";
-    this.hireDate = {} as NgbDateStruct;
+    this.hireDate = "";
     this.department = "";
 
     this.employeeInterestQnA.forEach(element => {

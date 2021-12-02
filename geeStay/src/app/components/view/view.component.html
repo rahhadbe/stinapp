@@ -1,4 +1,4 @@
-<div style="margin: 0.5rem;height: 70vh;">
+<div style="margin: 0.5rem;height: 80vh; overflow: auto">
 
     <form>
         <div class="form-group row">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <button *ngIf="!isFeedbackDataLoaded" class="btn-primary" style="float: right;" (click)="search()">Search Feedback</button>
-
+        <button *ngIf="isEmployeeDataLoaded" class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
         <table *ngIf="isEmployeeDataLoaded" class="table table-striped">
             <thead>
                 <tr>
@@ -21,37 +21,32 @@
                 </tr>
             </thead>
             <tbody style="overflow: auto;height: 20vh;">
-                <tr *ngFor="let feedback of feedbackList; index as i">
+                <tr style="height: 1rem !important;" *ngFor="let feedback of feedbackList; index as i">
                     <td>{{feedback.feedbackId}}</td>
                     <td>{{feedback.connectDate}}</td>
                     <td>{{feedback.managerEmail}}</td>
                     <td>
-                        <button (click)="viewFeedback(feedback)">
-                            <i class="bi bi-info-square-fill"></i>
-                        </button>
+                        <i (click)="viewFeedback(feedback)" style="cursor: pointer;" class="bi bi-info-square-fill"></i>
                     </td>
                 </tr>
             </tbody>
         </table>
         <table *ngIf="isFeedbackDataLoaded" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Feedback Category</th>
-                        <th scope="col">Question</th>
-                        <th scope="col">Answer</th>
-                    </tr>
-                </thead>
-                <tbody style="overflow: auto;height: 30vh;">
-                    <tr *ngFor="let feedback of feedbackData; index as i">
-                        <td>{{feedback.category}}</td>
-                        <td>{{feedback.question}}</td>
-                        <td>{{feedback.answer}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <thead>
+                <tr>
+                    <th scope="col">Feedback Category</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Answer</th>
+                </tr>
+            </thead>
+            <tbody style="overflow: auto;height: 30vh;">
+                <tr style="height: 1rem !important;" *ngFor="let feedback of feedbackData; index as i">
+                    <td>{{feedback.category}}</td>
+                    <td>{{feedback.question}}</td>
+                    <td>{{feedback.answer}}</td>
+                </tr>
+            </tbody>
+        </table>
 
     </form>
-</div>
-<div *ngIf="isEmployeeDataLoaded" style="width: 100%">
-    <button class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
 </div>
