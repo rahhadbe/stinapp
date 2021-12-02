@@ -17,8 +17,9 @@ public class FeedbackDet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackDetId;
     private Long feedbackId;
-    private String question;
+    private Long questionId;
     private String response;
+    private String sentimentscore;
 
     @ManyToOne
     @JoinColumn(name="feedbackId")
