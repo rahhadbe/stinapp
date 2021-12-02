@@ -14,7 +14,7 @@ public class GeeStayController {
     @Autowired
     private GeeStayService geeStayService;
 
-    @PostMapping("/initiate")
+    @PostMapping("/employee")
     public ResponseEntity initiate(@RequestBody Employee employee){
         geeStayService.initiate(employee);
         return null;
