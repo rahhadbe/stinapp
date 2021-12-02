@@ -8,24 +8,22 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name="Feedback")
+@Entity(name = "feedback")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Feedback {
     @Id
     @GeneratedValue
-    private Long feedbackId;
+    private Long feedbackid;
 
-    private Long managerHrId;
     @Temporal(TemporalType.DATE)
-    private Date captureDate;
+    private Date capturetime;
 
-    @ManyToOne
-    @JoinColumn(name="employeeHrId")
-    private Employee employee;
+    private Long employeehrid;
+//    private Long managerhrid;
+    private Long questionid;
+//    private String aggsentiment_score;
+    private String response;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "feedback")
-    private List<FeedbackDet> feedbackDetList;
 }

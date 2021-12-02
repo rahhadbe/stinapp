@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Deprecated
 public class FeedbackDet {
     @Id
     @GeneratedValue
