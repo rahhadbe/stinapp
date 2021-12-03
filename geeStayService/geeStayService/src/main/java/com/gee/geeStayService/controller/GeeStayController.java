@@ -29,6 +29,11 @@ public class GeeStayController {
         return geeStayService.getEmployee(email);
     }
 
+    @GetMapping(value = "/question")
+    public Question getQuestion() {
+        return geeStayService.getQuestion();
+    }
+
     @GetMapping(value = "/feedback/{email}")
     public List <Feedback> getFeedback(@PathVariable("email") String email) {
         return geeStayService.getFeedback(email);
