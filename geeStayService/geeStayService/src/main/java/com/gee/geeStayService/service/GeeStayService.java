@@ -61,6 +61,8 @@ public class GeeStayService {
             {
                 FeedbackDet fd = new FeedbackDet();
                 fd.setQuestionid(Long.parseLong(questionid));
+                fd.setQuestioncategory(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncategory());
+                fd.setQuestioncontent(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncontent());
                 fd.setResponse(feedbackResponse.get(email).get(questionid));
                 fd.setFeedback(f);
                 f.getFeedbackList().add(fd);

@@ -18,6 +18,8 @@ public class FeedbackDet implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackdetid;
     private Long questionid;
+    private String questioncategory;
+    private String questioncontent;
     private String response;
     private String sentimentscore;
 
