@@ -72,7 +72,7 @@ export class InitiateViewComponent implements OnInit {
 
     this.restService.getEmployeeByEmail(this.email).subscribe(result => {
       this.firstName = result['firstname'];
-      this.lastName = result['firstname'];
+      this.lastName = result['lastname'];
       this.email = result['email'];
       this.hireDate = result['hiredate'];
       this.managerEmail = result['manageremail'];
