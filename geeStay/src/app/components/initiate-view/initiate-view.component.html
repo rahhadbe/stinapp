@@ -1,6 +1,6 @@
 <div style="margin: 0.5rem;height: 70vh;">
 
-    <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" [destroyOnHide]="false" class="nav-tabs">
         <li [ngbNavItem]="1">
             <a ngbNavLink>Candidate
                 <span style="color: red">*</span>
@@ -15,7 +15,7 @@
                             <input [disabled]="isDataLoaded" type="email" name="email" [(ngModel)]="email" class="form-control" id="email" placeholder="Email">
                         </div>
                     </div>
-                    <button *ngIf="!isDataLoaded" class="btn-primary" style="float: right;" (click)="search()">Search</button>
+                    <button *ngIf="!isDataLoaded" [disabled]="!email || email == null || email.trim().length == 0" class="btn-primary" style="float: right;" (click)="search()">Search</button>
                     <div *ngIf="isDataLoaded">
                         <div class="form-group row">
                             <label for="firstName" class="col-sm-2 col-form-label">First Name
@@ -81,8 +81,23 @@
                     </div>
                 </form>
             </ng-template>
+        </li>        
+        <ng-container *ngIf="isDataLoaded">
+        <li *ngFor="let qna of qnaCatList; let index" [ngbNavItem]="(index+1)">
+            <a ngbNavLink>{{qna}}
+                <span style="color: red">*</span>
+            </a>
+            <ng-template ngbNavContent>
+                <form>
+                    <div *ngFor="let qnaData of qnaObj[qna]; let index" class="form-group" style="margin-bottom: 1rem">
+                        <label for="answer{{index}}" class="col-form-label">{{qnaData.questioncontent}}</label>
+                        <input type="text" name="answer{{1}}" class="form-control" id="answer{{1}}" [(ngModel)]="qnaData['answer']">
+                    </div>
+                </form>
+            </ng-template>
         </li>
-        <li *ngIf="isDataLoaded" [ngbNavItem]="2">
+        </ng-container>
+        <!-- <li *ngIf="isDataLoaded" [ngbNavItem]="2">
             <a ngbNavLink>Employee Interest
                 <span style="color: red">*</span>
             </a>
@@ -146,13 +161,14 @@
                     </div>
                 </form>
             </ng-template>
-        </li>
+        </li> -->
     </ul>
 
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </div>
 <div *ngIf="isDataLoaded" style="width: 100%">
     <div *ngIf="errorMsg && errorMsg.length > 0" style="color: red;float:left" [innerHTML]="errorMsg"></div>
-    <button class="btn-primary" style="float: right;" (click)="submit()">Submit</button>
-    <button class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
+    <button [disabled]="isDisabled" class="btn-primary" style="float: right;" (click)="submit()">Submit</button>
+    <button [disabled]="isDisabled" class="btn-primary" style="float: right; margin-right:0.5rem" (click)="reset()">Reset</button>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

@@ -49,7 +49,7 @@ export class AdminViewComponent implements OnInit {
         firstname: this.firstName,
         lastname: this.lastName,
         email: this.email,
-        managerhrid: 123,
+        manageremail: this.managerEmail,
         // hireDate: this.hireDate['day'] + "/" + this.hireDate['month'] + "/" + this.hireDate['year'],
         departmentname: this.department
       }).subscribe((result: any) => {
