@@ -23,4 +23,7 @@ public class Feedback {
     @Temporal(TemporalType.DATE)
     private Date capturedate;
     private String aggsentiment_score;
+
+    @OneToMany(mappedBy = "feedback", cascade = CascadeType.ALL)
+    private List <FeedbackDet> feedbackList;
 }

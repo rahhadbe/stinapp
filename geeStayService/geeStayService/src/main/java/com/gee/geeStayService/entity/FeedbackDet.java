@@ -15,13 +15,12 @@ import javax.persistence.*;
 public class FeedbackDet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long feedbackDetId;
-    private Long feedbackId;
-    private Long questionId;
+    private Long feedbackdetid;
+    private Long questionid;
     private String response;
     private String sentimentscore;
 
     @ManyToOne
-    @JoinColumn(name="feedbackId")
+    @JoinColumn(name="feedbackid")
     private Feedback feedback;
 }
