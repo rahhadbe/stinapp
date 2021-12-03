@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -46,7 +47,7 @@ public class GeeStayController {
     }
 
     @PostMapping(value = "/feedback")
-    public void postResponse(@RequestBody Feedback feedbackResponse) {
+    public void postResponse(@RequestBody HashMap <String, HashMap<Long,String>> feedbackResponse) {
         geeStayService.save(feedbackResponse);
     }
 

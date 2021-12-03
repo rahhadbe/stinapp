@@ -11,7 +11,7 @@ import com.gee.geeStayService.repo.FeedbackRepoDet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class GeeStayService {
@@ -48,8 +48,26 @@ public class GeeStayService {
         return feedbackRepoDet.getFeedbackById(id);
     }
 
-    public void save(Feedback feedbackResponse) {
-        feedbackRepo.save(feedbackResponse);
+    public void save(HashMap <String, HashMap<Long, String>> feedbackResponse) {
+        for (String email : feedbackResponse.keySet()) {
+
+            Feedback f = new Feedback();
+            f.setFeedbackList(new ArrayList<>());
+            f.setEmployeeemail(email);
+            f.setManageremail(employeeRepo.getEmployeeByEmail(email).getManageremail());
+            f.setCapturedate(new Date());
+
+            for (Long questionid : feedbackResponse.get(email).keySet())
+            {
+                FeedbackDet fd = new FeedbackDet();
+                fd.setQuestionid(questionid);
+                fd.setResponse(feedbackResponse.get(email).get(questionid));
+                fd.setFeedback(f);
+                f.getFeedbackList().add(fd);
+            }
+            feedbackRepo.save(f);
+        }
+
     }
 
 }
