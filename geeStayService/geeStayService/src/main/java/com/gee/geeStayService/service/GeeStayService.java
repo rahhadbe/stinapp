@@ -41,7 +41,7 @@ public class GeeStayService {
     }
 
     public List <Feedback> getFeedback(String email) {
-        return feedbackRepo.getFeedbackByEmail(email);
+        return feedbackRepo.findByEmployeeemail(email);
     }
 
     public List <FeedbackDet> getFeedbackDet(Long id) {

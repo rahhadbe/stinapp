@@ -8,7 +8,6 @@ import java.util.*;
 @Repository
 public interface FeedbackRepo extends JpaRepository<Feedback, Long> {
 
-    @Query( value = "SELECT * FROM feedback u WHERE u.employeeemail = :email", nativeQuery = true)
-    List <Feedback> getFeedbackByEmail(String email);
+    List <Feedback> findByEmployeeemail(String employeemail);
 
 }

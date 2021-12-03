@@ -1,18 +1,19 @@
 package com.gee.geeStayService.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.*;
 
 @Entity
 @Table(name="Feedbackdet")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Deprecated
-public class FeedbackDet {
+public class FeedbackDet implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackdetid;
@@ -22,5 +23,6 @@ public class FeedbackDet {
 
     @ManyToOne
     @JoinColumn(name="feedbackid")
+    @JsonBackReference
     private Feedback feedback;
 }
