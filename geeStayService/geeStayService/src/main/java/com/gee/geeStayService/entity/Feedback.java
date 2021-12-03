@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 public class Feedback {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackid;
 
     @Temporal(TemporalType.DATE)
