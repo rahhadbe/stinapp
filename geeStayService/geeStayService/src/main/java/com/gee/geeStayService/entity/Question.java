@@ -16,10 +16,8 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int questionid;
+    private Long questionid;
     private String questioncategory;
     private String questioncontent;
-    private QuestionType questiontype;
-    private String possibilities;
 
 }

@@ -2,6 +2,7 @@ package com.gee.geeStayService.controller;
 
 import com.gee.geeStayService.entity.Employee;
 import com.gee.geeStayService.entity.Feedback;
+import com.gee.geeStayService.entity.*;
 import com.gee.geeStayService.entity.FeedbackDet;
 import com.gee.geeStayService.service.GeeStayService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class GeeStayController {
     }
 
     @GetMapping(value = "/question")
-    public Question getQuestion() {
+    public List <Question> getQuestion() {
         return geeStayService.getQuestion();
     }
 
