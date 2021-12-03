@@ -48,7 +48,7 @@ public class GeeStayService {
         return feedbackRepoDet.getFeedbackById(id);
     }
 
-    public void save(HashMap <String, HashMap<Long, String>> feedbackResponse) {
+    public void save(HashMap <String, HashMap<String, String>> feedbackResponse) {
         for (String email : feedbackResponse.keySet()) {
 
             Feedback f = new Feedback();
@@ -57,10 +57,10 @@ public class GeeStayService {
             f.setManageremail(employeeRepo.getEmployeeByEmail(email).getManageremail());
             f.setCapturedate(new Date());
 
-            for (Long questionid : feedbackResponse.get(email).keySet())
+            for (String questionid : feedbackResponse.get(email).keySet())
             {
                 FeedbackDet fd = new FeedbackDet();
-                fd.setQuestionid(questionid);
+                fd.setQuestionid(Long.parseLong(questionid));
                 fd.setResponse(feedbackResponse.get(email).get(questionid));
                 fd.setFeedback(f);
                 f.getFeedbackList().add(fd);

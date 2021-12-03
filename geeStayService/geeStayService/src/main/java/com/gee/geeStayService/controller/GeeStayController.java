@@ -47,7 +47,7 @@ public class GeeStayController {
     }
 
     @PostMapping(value = "/feedback")
-    public void postResponse(@RequestBody HashMap <String, HashMap<Long,String>> feedbackResponse) {
+    public void postResponse(@RequestBody HashMap <String, HashMap<String,String>> feedbackResponse) {
         geeStayService.save(feedbackResponse);
     }
 
