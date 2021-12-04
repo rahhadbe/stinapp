@@ -14,7 +14,6 @@ import java.io.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@CrossOrigin
 public class Employee {
 
     @Id

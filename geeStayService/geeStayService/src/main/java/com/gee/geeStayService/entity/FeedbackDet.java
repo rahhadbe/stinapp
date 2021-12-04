@@ -14,7 +14,6 @@ import java.io.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@CrossOrigin
 public class FeedbackDet implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
