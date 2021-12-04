@@ -16,6 +16,7 @@ import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.AnalyzeSentimentResponse;
 import com.google.cloud.language.v1.Document.Type;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -55,21 +56,23 @@ public class GeeStayService {
     }
 
     /** Identifies the sentiment in the string {@code text}. */
-    public static Sentiment analyzeSentimentText(String text) throws Exception {
+    public Sentiment analyzeSentimentText(String text) throws IOException {
         // [START language_sentiment_text]
         // Instantiate the Language client com.google.cloud.language.v1.LanguageServiceClient
-        try (LanguageServiceClient language = LanguageServiceClient.create()) {
-            Document doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build();
-            AnalyzeSentimentResponse response = language.analyzeSentiment(doc);
-            Sentiment sentiment = response.getDocumentSentiment();
-            if (sentiment == null) {
+        LanguageServiceClient language = LanguageServiceClient.create();
+        Document doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build();
+        AnalyzeSentimentResponse response = language.analyzeSentiment(doc);
+        Sentiment sentiment = response.getDocumentSentiment();
+        if (sentiment == null)
+        {
                 System.out.println("No sentiment found");
-            } else {
-                System.out.printf("Sentiment magnitude: %.3f\n", sentiment.getMagnitude());
-                System.out.printf("Sentiment score: %.3f\n", sentiment.getScore());
-            }
-            return sentiment;
         }
+        else
+        {
+                System.out.printf("Sentiment magnitude: ", sentiment.getMagnitude());
+                System.out.printf("Sentiment score: ", sentiment.getScore());
+        }
+        return sentiment;
         // [END language_sentiment_text]
     }
 
@@ -96,13 +99,15 @@ public class GeeStayService {
                 fd.setQuestioncategory(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncategory());
                 fd.setQuestioncontent(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncontent());
                 fd.setResponse(feedbackResponse.get(email).get(questionid));
-                try {
+                try
+                {
                     Sentiment sen = analyzeSentimentText(feedbackResponse.get(email).get(questionid));
                     if (sen == null) {
                         ressent = "No Sentiment Found";
                         sent_arr[4] = sent_arr[4] + 1;
                     }
-                    else {
+                    else
+                    {
                         sentscore = sen.getScore();
                         sentmag = sen.getMagnitude();
                         if (sentscore < 0) {
@@ -124,9 +129,10 @@ public class GeeStayService {
 
                     }
                 }
-                catch(Exception e){
-                    ressent = "Error!";
+                catch (IOException e) {
+                    e.printStackTrace();
                 }
+
                 fd.setSentimentscore(ressent);
                 fd.setFeedback(f);
                 f.getFeedbackList().add(fd);
