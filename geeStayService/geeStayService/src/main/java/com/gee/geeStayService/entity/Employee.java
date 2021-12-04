@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.util.Date;
 import java.util.List;
 import java.io.*;
@@ -12,6 +14,7 @@ import java.io.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@CrossOrigin
 public class Employee {
 
     @Id

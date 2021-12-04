@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.io.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@CrossOrigin
 public class Feedback implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

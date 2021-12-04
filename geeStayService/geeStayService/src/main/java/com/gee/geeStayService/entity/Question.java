@@ -3,6 +3,7 @@ package com.gee.geeStayService.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@CrossOrigin
 public class Question {
 
     @Id
