@@ -101,8 +101,13 @@ public class GeeStayService {
                 fd.setResponse(feedbackResponse.get(email).get(questionid));
                 try
                 {
+                    System.out.printf("Call to Sentiment method ");
+                    System.out.printf("Response ", feedbackResponse.get(email).get(questionid));
                     Sentiment sen = analyzeSentimentText(feedbackResponse.get(email).get(questionid));
+                    System.out.printf("Sentiment magnitude: ", sen.getMagnitude());
+                    System.out.printf("Sentiment magnitude: ", sen.getScore());
                     if (sen == null) {
+                        System.out.printf("Sentiment is null");
                         ressent = "No Sentiment Found";
                         sent_arr[4] = sent_arr[4] + 1;
                     }
@@ -110,6 +115,7 @@ public class GeeStayService {
                     {
                         sentscore = sen.getScore();
                         sentmag = sen.getMagnitude();
+                        System.out.printf("Sentiment is not null");
                         if (sentscore < 0) {
                             ressent = "Negative";
                             sent_arr[0] = sent_arr[0] + 1;
