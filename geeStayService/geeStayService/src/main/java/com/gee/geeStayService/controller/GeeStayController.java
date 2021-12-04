@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,9 +46,14 @@ public class GeeStayController {
     public List <FeedbackDet> getFeedbackDet(@PathVariable("id") Long id) {
         return geeStayService.getFeedbackDet(id);
     }
+    /**
+     @PostMapping(value = "/feedback")
+     public void postResponse(@RequestBody HashMap <String, HashMap<String,String>> feedbackResponse){
+     geeStayService.save(feedbackResponse);
+     }*/
 
     @PostMapping(value = "/feedback")
-    public void postResponse(@RequestBody HashMap <String, HashMap<String,String>> feedbackResponse) {
+    public void postResponse(@RequestBody HashMap <String, HashMap<String,String>> feedbackResponse) throws IOException {
         geeStayService.save(feedbackResponse);
     }
 
