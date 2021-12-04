@@ -56,6 +56,7 @@ public class GeeStayService {
     }
 
     /** Identifies the sentiment in the string {@code text}. */
+    /**
     public Sentiment analyzeSentimentText(String text) throws IOException {
         // [START language_sentiment_text]
         // Instantiate the Language client com.google.cloud.language.v1.LanguageServiceClient
@@ -75,6 +76,7 @@ public class GeeStayService {
         return sentiment;
         // [END language_sentiment_text]
     }
+    */
 
     public void save(HashMap <String, HashMap<String, String>> feedbackResponse) {
         for (String email : feedbackResponse.keySet()) {
@@ -99,13 +101,10 @@ public class GeeStayService {
                 fd.setQuestioncategory(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncategory());
                 fd.setQuestioncontent(feedbackRepoDet.getById(Long.parseLong(questionid)).getQuestioncontent());
                 fd.setResponse(feedbackResponse.get(email).get(questionid));
-                try
+                /**try
                 {
-                    System.out.printf("Call to Sentiment method ");
-                    System.out.printf("Response ", feedbackResponse.get(email).get(questionid));
+
                     Sentiment sen = analyzeSentimentText(feedbackResponse.get(email).get(questionid));
-                    System.out.printf("Sentiment magnitude: ", sen.getMagnitude());
-                    System.out.printf("Sentiment magnitude: ", sen.getScore());
                     if (sen == null) {
                         System.out.printf("Sentiment is null");
                         ressent = "No Sentiment Found";
@@ -137,6 +136,25 @@ public class GeeStayService {
                 }
                 catch (IOException e) {
                     e.printStackTrace();
+                }
+                */
+                sentscore = 0.5f;
+                sentmag = 3.0f;
+                if (sentscore < 0) {
+                    ressent = "Negative";
+                    sent_arr[0] = sent_arr[0] + 1;
+                } else if (sentscore >= 0.0 & sentscore < 0.5) {
+                    if (sentmag >= 0.0 & sentmag <= 2.0) {
+                        ressent = "Neutral";
+                        sent_arr[1] = sent_arr[1] + 1;
+                    } else //magnitude > 2.0
+                    {
+                        ressent = "Mixed";
+                        sent_arr[2] = sent_arr[2] + 1;
+                    }
+                } else {
+                    ressent = "Positive";
+                    sent_arr[3] = sent_arr[3] + 1;
                 }
 
                 fd.setSentimentscore(ressent);
